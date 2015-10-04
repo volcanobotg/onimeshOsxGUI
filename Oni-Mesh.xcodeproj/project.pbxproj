@@ -204,7 +204,7 @@
 				TargetAttributes = {
 					6F443BCC1BC05BAF00AC1199 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 4CN47GYD2B;
+						DevelopmentTeam = EDK75X98TF;
 					};
 					6F443BE21BC05BAF00AC1199 = {
 						CreatedOnToolsVersion = 7.0;
@@ -399,7 +399,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Oni-Mesh/Info.plist";
@@ -414,7 +414,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Oni-Mesh/Info.plist";
@@ -496,6 +496,7 @@
 				6F443BF91BC05BAF00AC1199 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6F443BFA1BC05BAF00AC1199 /* Build configuration list for PBXNativeTarget "Oni-MeshTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +505,7 @@
 				6F443BFC1BC05BAF00AC1199 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6F443BFD1BC05BAF00AC1199 /* Build configuration list for PBXNativeTarget "Oni-MeshUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +514,7 @@
 				6F443BFF1BC05BAF00AC1199 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
