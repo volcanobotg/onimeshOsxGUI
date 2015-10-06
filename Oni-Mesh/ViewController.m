@@ -128,6 +128,7 @@ void _writeToTextFile(); //function prototype
     
     if (fileWasCreated) {
         
+        fileWasCreated = false;
         NSFileManager *myFile = [[NSFileManager alloc] init];
         NSError *error = nil;
         if (![myFile removeItemAtURL:saveOutputUrl error:&error]) {
