@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Oni-Mesh.xcscheme</key>
+		<key>OniMesh Launcher.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>6F443BCC1BC05BAF00AC1199</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6F443BE21BC05BAF00AC1199</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6F443BED1BC05BAF00AC1199</key>
+		<key>6FB5A9431BD47798006BFEDB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

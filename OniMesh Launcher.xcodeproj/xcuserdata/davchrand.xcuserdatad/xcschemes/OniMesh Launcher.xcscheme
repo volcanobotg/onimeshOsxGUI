@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6F443BCC1BC05BAF00AC1199"
-               BuildableName = "Oni-Mesh.app"
-               BlueprintName = "Oni-Mesh"
-               ReferencedContainer = "container:Oni-Mesh.xcodeproj">
+               BlueprintIdentifier = "6FB5A9431BD47798006BFEDB"
+               BuildableName = "OniMesh Launcher.app"
+               BlueprintName = "OniMesh Launcher"
+               ReferencedContainer = "container:OniMesh Launcher.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,34 +28,14 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6F443BE21BC05BAF00AC1199"
-               BuildableName = "Oni-MeshTests.xctest"
-               BlueprintName = "Oni-MeshTests"
-               ReferencedContainer = "container:Oni-Mesh.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6F443BED1BC05BAF00AC1199"
-               BuildableName = "Oni-MeshUITests.xctest"
-               BlueprintName = "Oni-MeshUITests"
-               ReferencedContainer = "container:Oni-Mesh.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6F443BCC1BC05BAF00AC1199"
-            BuildableName = "Oni-Mesh.app"
-            BlueprintName = "Oni-Mesh"
-            ReferencedContainer = "container:Oni-Mesh.xcodeproj">
+            BlueprintIdentifier = "6FB5A9431BD47798006BFEDB"
+            BuildableName = "OniMesh Launcher.app"
+            BlueprintName = "OniMesh Launcher"
+            ReferencedContainer = "container:OniMesh Launcher.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6F443BCC1BC05BAF00AC1199"
-            BuildableName = "Oni-Mesh.app"
-            BlueprintName = "Oni-Mesh"
-            ReferencedContainer = "container:Oni-Mesh.xcodeproj">
+            BlueprintIdentifier = "6FB5A9431BD47798006BFEDB"
+            BuildableName = "OniMesh Launcher.app"
+            BlueprintName = "OniMesh Launcher"
+            ReferencedContainer = "container:OniMesh Launcher.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6F443BCC1BC05BAF00AC1199"
-            BuildableName = "Oni-Mesh.app"
-            BlueprintName = "Oni-Mesh"
-            ReferencedContainer = "container:Oni-Mesh.xcodeproj">
+            BlueprintIdentifier = "6FB5A9431BD47798006BFEDB"
+            BuildableName = "OniMesh Launcher.app"
+            BlueprintName = "OniMesh Launcher"
+            ReferencedContainer = "container:OniMesh Launcher.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
