@@ -12,6 +12,7 @@ ___
 4. Open a Terminal window
 5. Enter the command `sudo /Applications/OpenNI-MacOSX-x64-2.2/install.sh`
 6. Enter your admin password when prompted to install OpenNI2
+
 ##### OniMesh Placed in the Applications folder 
 1. Clone the onimesh repository to your applications folder
 2. Open a Terminal window
@@ -23,11 +24,13 @@ ___
 1. OniMeshLauncher has a forked repository that contains the exported application from xcode.
 2. This exported application simply needs to be moved to the /Applications folder.
 3. Once OniMeshLauncher is in the /Applications folder simply double click on it and it will launch.
-### Usage
+
+##### Usage
 1. The user clicks Select ONI Files
 2. The user clicks Select Output Directory
 3. The user clicks Launch OniMesh
-#### Important Usage Notes:
+
+##### Important Usage Notes:
 * Only ONI Files are used by OniMesh
   
 
