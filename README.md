@@ -14,7 +14,7 @@ ___
 6. Enter your admin password when prompted to install OpenNI2
 
 ##### OniMesh Placed in the Applications folder 
-1. Clone the onimesh repository to your applications folder
+1. Clone the onimesh repository to your /Applications folder
 2. Open a Terminal window
 3. In Terminal, navigate to /Applications/onimesh
 4. Enter the command 'make'
