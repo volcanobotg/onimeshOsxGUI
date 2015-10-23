@@ -1,10 +1,14 @@
-//
+////////////////////////////////////////////////////////////////////////////////////////
 //  ViewController.m
 //  OniMesh Launcher
 //
+//  This is the implementation file for the view controller. It has the implementation
+//  for the buttons on OniMesh Launcher.
+//
 //  Created by David Andrews on 10/18/15.
 //  Copyright © 2015 David Andrews. All rights reserved.
-//
+////////////////////////////////////////////////////////////////////////////////////////
+
 
 #import "ViewController.h"
 #import "OMTask.h"
@@ -13,20 +17,23 @@
 ////////////////////////////////////////////////////////////////////////////////////////
 //Global Variables
 ////////////////////////////////////////////////////////////////////////////////////////
-NSArray* fileNames; //takes file names that are selected
-NSURL *saveOutputUrl; //takes the output path selected
-BOOL outputFileWasSelected = true; //Bool to prevent deprecations by Stop and Pause buttons
-BOOL fileWasSelected; //Bool to let Start button know if a file has been selected
 
-////////////////////////////////////////////////////////////////////////////////////////
+//takes file names that are selected
+NSArray* fileNames;
+//takes the output path selected
+NSURL *saveOutputUrl;
+//Bool to prevent deprecations by Stop and Pause buttons
+BOOL outputFileWasSelected = false;
+//Bool to let Start button know if a file has been selected
+BOOL fileWasSelected;
 
+NSString * myString;
 
-////////////////////////////////////////////////////////////////////////////////////////
-//Function Prototypes
 ////////////////////////////////////////////////////////////////////////////////////////
 
 
 @implementation ViewController {
+    //Makes an object of OMTask for use by LaunchOniMeshButton
     OMTask *theTask;
 }
 
@@ -34,21 +41,26 @@ BOOL fileWasSelected; //Bool to let Start button know if a file has been selecte
 
 ///////////////////////////////////////////////////////////////////////////////////////
 //viewDidLoad
-//Purpose: Standard xcode function for loading and refreshing the view.
+//
+//Purpose: Standard Xcode function for loading and refreshing the view.
 //
 ///////////////////////////////////////////////////////////////////////////////////////
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     // Do any additional setup after loading the view.
     theTask = [[OMTask alloc] init];
+    theTask.argumentString = [[NSString alloc] init];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
 //setRepresentedObject
-//Purpose: Standard xcode function for updating the view
+//
+//Purpose: Standard Xcode function for updating the view
 //
 ///////////////////////////////////////////////////////////////////////////////////////
+
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
 
@@ -57,12 +69,15 @@ BOOL fileWasSelected; //Bool to let Start button know if a file has been selecte
 
 ///////////////////////////////////////////////////////////////////////////////////////
 //selectONIFilesButton
-//Purpose: Responds to when the user clicks the Select Files button. When the button
+//
+//Purpose: Responds to when the user clicks the Select ONI Files button. When the button
 //         is pressed opens a file browser window for the user to navigate to and
-//         select files to be used by the program.
+//         select ONI files to be used by the program.
+//
 //Credit:  https://developer.apple.com/library/ios/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/UsingtheOpenandSavePanels/UsingtheOpenandSavePanels.html
 //
 ///////////////////////////////////////////////////////////////////////////////////////
+
 - (IBAction)selectONIFilesButton:(id)sender {
     
     // Get the main window for the document.
@@ -70,60 +85,73 @@ BOOL fileWasSelected; //Bool to let Start button know if a file has been selecte
     
     // Create and configure the panel.
     NSOpenPanel* panel = [NSOpenPanel openPanel];
-    
     [panel setCanChooseDirectories:NO];
     [panel setAllowsMultipleSelection:YES];
     //[panel setAllowedFileTypes:oni];
     [panel setMessage:@"Import one or more files."];
     
-    // Display the panel attached to the document's window.
+    // Display the panel attached to the applications window.
     [panel beginSheetModalForWindow:window completionHandler:^(NSInteger result){
         
         if (result == NSFileHandlingPanelOKButton) {
             
             fileNames = [panel URLs];
+            
+            //Lets the user know that they have selected files to be processed.
             [_outputLabel setStringValue:@"Files have been Selected"];
         }
         
     }];
+    
+    //Sets the boolean to true so that selectOutputDirectoryButton can proceed to
+    //letting the user select an output.
     fileWasSelected = true;
 
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
 //selectOutputDirectoryButton
-//Purpose: Responds to when the user clicks Start button. If files have been selected
-//         startButtonPressed creates a text file with the URLs of the selected files.
-//         The text file is saved to a user specified directory. The user selects the
-//         save destination by using the native OSX save panel. If files have not been
-//         selected then a message is displayed in the application telling the user to
-//         select files.
+//
+//Purpose: Responds to when the user clicks Select Output Directory button.
+//         If files have been selected the user can select an output directory.
+//         The user selects the save destination by using the native OSX save panel.
+//         If files have not been selected then a message is displayed in the
+//         application telling the user to select files.
+//
 //Credit: http://juliuspaintings.co.uk/cgi-bin/paint_css/animatedPaint/035-Simple-Read-Write.pl
 //
 ///////////////////////////////////////////////////////////////////////////////////////
+
 - (IBAction)selectOutputDirectoryButton:(id)sender {
     
     if (fileWasSelected){
+        
+        //Sets the boolean to true so that LaunchOniMeshButton can proceed to launching
+        //the task.
         outputFileWasSelected = true;
+        
+        //Message to the user that an output location is being selected.
         [_outputLabel setStringValue:@"Output Location is being Selected"];
         
         
-        // get the file url
+        //Gets the file url from NSSavePanel and sets it to outputSavePanel.
         NSSavePanel * outputSavePanel = [NSSavePanel savePanel];
         NSInteger fileNamesOutput = [outputSavePanel runModal];
         //[outputSavePanel setCanChooseDirectories:YES];
+        
+        //Handles case where the user clicks "cancel" instead of "OK" from the SavePanel
+        //used to allow the user to select an output location.
         if (fileNamesOutput == NSFileHandlingPanelCancelButton) {
             NSLog(@"writeUsingSavePanel cancelled");
             outputFileWasSelected = false;
             return;
         }
+        
+        //Sets the global saveOutputUrl to the file path that was selected for output.
         saveOutputUrl = [outputSavePanel URL];
         
-        //write
-        /*BOOL stringBoolResult = [myString writeToURL:saveOutputUrl atomically:YES encoding:NSASCIIStringEncoding error:NULL];
-         if (! stringBoolResult) {
-         [_outputLabel setStringValue:@"Selection of Output Location failed!"];
-         }*/
+        //Sends a messge to the user telling them that the output location has been
+        //selected.
         [_outputLabel setStringValue:@"Output Location has been Selected"];
     }
     
@@ -135,50 +163,60 @@ BOOL fileWasSelected; //Bool to let Start button know if a file has been selecte
 
 ///////////////////////////////////////////////////////////////////////////////////////
 //launchOniMeshButton
-//Purpose: stopButtonPressed responds to the user clicking Stop. If the user has
-//         clicked Start previously the program will delete the text file that
-//         was created by the startButtonPressed function. If the user just clicks
-//         Stop the function returns message saying the process has not been started.
+//
+//Purpose: launchOniMeshButton responds to the user clicking Launch OniMesh.
+//         If the user has satisfied SelectONIFilesButton and SelectOutputDirectoryButton
+//         the application will launch OniMesh.
+//         If the user has not satisfied SelectONIFilesButton and
+//         SelectOutputDirectoryButton launchOniMeshButton with display a message
+//         saying the process has not been started.
 //
 ///////////////////////////////////////////////////////////////////////////////////////
+
 - (IBAction)launchOniMeshButton:(id)sender {
     
-    [theTask StartTask];
     if (outputFileWasSelected) {
         
+        //Sets the boolean back to false to restrict the user from activating multiple
+        //times.
+        outputFileWasSelected = false;
         
-        //outputFileWasSelected = false;
+        //Creates a string from the file paths that were selected in
+        //SelectONIFilesButton method.
+        NSString * outputLocation = [saveOutputUrl absoluteString];
+        myString = [[NSString alloc]init];
+        myString = outputLocation;
         
-        //NSFileManager *myFile = [[NSFileManager alloc] init];
-        //NSError *error = nil;
-        /*if (![myFile removeItemAtURL:saveOutputUrl error:&error]) {
-         //NSLog(@"Error: %@", error);
-         }*/
-        // create the string to be written
-        NSString * myString = [[NSString alloc]init];
         NSUInteger arraySize = [fileNames count];
         for (int i = 0; i < arraySize; i++)
         {
-            myString = [myString stringByAppendingFormat:@"%@\n", fileNames[i]];
+            myString = [myString stringByAppendingFormat:@" %@", fileNames[i]];
         }
         
+        //Outputs to the GUI output to tell the user that it has launched OniMesh.
+        [_outputLabel setStringValue:@"OniMesh has been Launched"];
         
-        
+        //Calls StartTask from OMTask with our object of OMTask "theTask."
+        theTask.argumentString = myString;
         [theTask StartTask];
         
         
+        //Debugging calls to console to show what files paths were used.
+        //NSLog(@"\nFiles to be read in:\n%@",myString);
+        //NSString * outputLocation = [saveOutputUrl absoluteString];
+        //NSLog(@"\nOutput Location \n%@\n", outputLocation);
         
-        NSLog(@"\nFiles to be read in:\n%@",myString);
         
-        NSString * outputLocation = [saveOutputUrl absoluteString];
-        NSLog(@"\nOutput Location \n%@\n", outputLocation);
-        [_outputLabel setStringValue:@"OniMesh has been Launched"];
     }
+    
     else{
-        
-        //NSLog(@"Error: No Files Have Been Selected");
+        //Sends message to the output to tell the user to select an output location.
         [_outputLabel setStringValue:@"Output Location has not been Selected"];
     }
 }
 
 @end
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
