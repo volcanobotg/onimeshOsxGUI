@@ -34,6 +34,7 @@
     NSFileHandle *file = [pipe fileHandleForReading];
     
     //Launch path is where the executable to be launched is located.
+    [task setCurrentDirectoryPath:@"/Applications/onimesh/bin"];
     [task setLaunchPath:@"/Applications/onimesh/bin/onimesh"];
     
     //This is the array used for arguments sent to the launched program.
