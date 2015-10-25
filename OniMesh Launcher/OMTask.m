@@ -27,7 +27,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////
 -(void)StartTask{
     
-    NSLog(@"My argument string: %@",_argumentString);
+    NSLog(@"My argument array: %@",_argumentArray);
     //Initializes the process
     task = [[NSTask alloc] init];
     NSPipe *pipe = [NSPipe pipe];
@@ -37,9 +37,8 @@
     [task setCurrentDirectoryPath:@"/Applications/onimesh/bin"];
     [task setLaunchPath:@"/Applications/onimesh/bin/onimesh"];
     
-    //This is the array used for arguments sent to the launched program.
-    NSArray *argumentArray = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%@", _argumentString], nil];
-    [task setArguments:argumentArray];
+    //This sets the array used for arguments sent to the launched program.
+    [task setArguments:_argumentArray];
     
     //This sets the launched programs input and output to pipes so that they can
     //be read at a later time.

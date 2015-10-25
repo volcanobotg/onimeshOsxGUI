@@ -15,7 +15,7 @@
 
 
 @interface OMTask : NSObject
-@property NSString *argumentString;
+@property NSArray *argumentArray;
 
 -(void)StartTask;
 

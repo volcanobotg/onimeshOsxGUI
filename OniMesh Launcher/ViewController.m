@@ -27,7 +27,7 @@ BOOL outputFileWasSelected = false;
 //Bool to let Start button know if a file has been selected
 BOOL fileWasSelected;
 
-NSString * myString;
+NSArray *omArgArray;
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -51,7 +51,7 @@ NSString * myString;
 
     // Do any additional setup after loading the view.
     theTask = [[OMTask alloc] init];
-    theTask.argumentString = [[NSString alloc] init];
+    theTask.argumentArray = [[NSArray alloc] init];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -181,23 +181,15 @@ NSString * myString;
         //times.
         outputFileWasSelected = false;
         
-        //Creates a string from the file paths that were selected in
-        //SelectONIFilesButton method.
-        NSString * outputLocation = [saveOutputUrl absoluteString];
-        myString = [[NSString alloc]init];
-        myString = outputLocation;
-        
-        NSUInteger arraySize = [fileNames count];
-        for (int i = 0; i < arraySize; i++)
-        {
-            myString = [myString stringByAppendingFormat:@" %@", fileNames[i]];
-        }
+        //Creates onimesh argument array from output url and file names
+        omArgArray = @[saveOutputUrl];
+        omArgArray = [omArgArray arrayByAddingObjectsFromArray:fileNames];
         
         //Outputs to the GUI output to tell the user that it has launched OniMesh.
         [_outputLabel setStringValue:@"OniMesh has been Launched"];
         
         //Calls StartTask from OMTask with our object of OMTask "theTask."
-        theTask.argumentString = myString;
+        theTask.argumentArray = omArgArray;
         [theTask StartTask];
         
         
