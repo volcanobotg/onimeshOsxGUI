@@ -133,26 +133,24 @@ NSArray *omArgArray;
         //Message to the user that an output location is being selected.
         [_outputLabel setStringValue:@"Output Location is being Selected"];
         
+        //Create a NSOpenPanel and set its configuration
+        NSOpenPanel * outputPanel = [NSOpenPanel openPanel];
+        [outputPanel setCanChooseDirectories:YES];
+        [outputPanel setCanCreateDirectories:YES];
+        [outputPanel setMessage:@"Select the output directory."];
         
-        //Gets the file url from NSSavePanel and sets it to outputSavePanel.
-        NSSavePanel * outputSavePanel = [NSSavePanel savePanel];
-        NSInteger fileNamesOutput = [outputSavePanel runModal];
-        //[outputSavePanel setCanChooseDirectories:YES];
-        
-        //Handles case where the user clicks "cancel" instead of "OK" from the SavePanel
-        //used to allow the user to select an output location.
-        if (fileNamesOutput == NSFileHandlingPanelCancelButton) {
-            NSLog(@"writeUsingSavePanel cancelled");
-            outputFileWasSelected = false;
-            return;
-        }
-        
-        //Sets the global saveOutputUrl to the file path that was selected for output.
-        saveOutputUrl = [outputSavePanel URL];
-        
-        //Sends a messge to the user telling them that the output location has been
-        //selected.
-        [_outputLabel setStringValue:@"Output Location has been Selected"];
+        //Display the panel to the user
+        [outputPanel beginWithCompletionHandler:^(NSInteger result){
+            //Only save the url if the ok button was pressed
+            if (result == NSFileHandlingPanelOKButton) {
+                //Sets the global saveOutputUrl to the file path that was selected for output.
+                saveOutputUrl = [outputPanel URL];
+                
+                //Sends a messge to the user telling them that the output location has been
+                //selected.
+                [_outputLabel setStringValue:@"Output Location has been Selected"];
+            }
+        }];
     }
     
     else {
