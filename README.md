@@ -35,17 +35,5 @@ ___
   
 
 
-### Credit
-* Credit for the README editor goes to http://dillinger.io
-
-License
-----
-
-MIT
-
-
-**Free Software, Hell Yeah!**
-
-
 
 
