@@ -36,7 +36,7 @@
     NSString *currentpath = [[[NSBundle mainBundle] bundlePath] stringByDeletingPathExtension];
     NSString *fileName = [currentpath stringByDeletingLastPathComponent];
     NSLog(@"%@",fileName);
-    NSString *executablePathString = [fileName stringByAppendingString:@"/bin"];
+    NSString *executablePathString = [fileName stringByAppendingString:@"/osx_x64"];
     NSLog(@"%@", executablePathString);
     NSString *setMyLaunchPath = [executablePathString stringByAppendingString:@"/onimesh"];
     NSLog(@"%@", setMyLaunchPath);
