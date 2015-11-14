@@ -33,9 +33,16 @@
     NSPipe *pipe = [NSPipe pipe];
     NSFileHandle *file = [pipe fileHandleForReading];
     
+    NSString *currentpath = [[[NSBundle mainBundle] bundlePath] stringByDeletingPathExtension];
+    NSString *fileName = [currentpath stringByDeletingLastPathComponent];
+    NSLog(@"%@",fileName);
+    NSString *executablePathString = [fileName stringByAppendingString:@"/bin"];
+    NSLog(@"%@", executablePathString);
+    NSString *setMyLaunchPath = [executablePathString stringByAppendingString:@"/onimesh"];
+    NSLog(@"%@", setMyLaunchPath);
     //Launch path is where the executable to be launched is located.
-    [task setCurrentDirectoryPath:@"/Applications/onimesh/bin"];
-    [task setLaunchPath:@"/Applications/onimesh/bin/onimesh"];
+    [task setCurrentDirectoryPath:executablePathString];
+    [task setLaunchPath:setMyLaunchPath];
     
     //This sets the array used for arguments sent to the launched program.
     [task setArguments:_argumentArray];
