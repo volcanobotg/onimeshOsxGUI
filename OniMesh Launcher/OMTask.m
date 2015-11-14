@@ -33,10 +33,8 @@
     NSPipe *pipe = [NSPipe pipe];
     NSFileHandle *file = [pipe fileHandleForReading];
     
-    NSString *currentpath = [[[NSBundle mainBundle] bundlePath] stringByDeletingPathExtension];
-    NSString *fileName = [currentpath stringByDeletingLastPathComponent];
-    NSLog(@"%@",fileName);
-    NSString *executablePathString = [fileName stringByAppendingString:@"/osx_x64"];
+    NSString *currentPath = [[[NSBundle mainBundle] bundlePath] stringByDeletingPathExtension];
+    NSString *executablePathString = [currentPath stringByDeletingLastPathComponent];
     NSLog(@"%@", executablePathString);
     NSString *setMyLaunchPath = [executablePathString stringByAppendingString:@"/onimesh"];
     NSLog(@"%@", setMyLaunchPath);
