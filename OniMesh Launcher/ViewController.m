@@ -87,7 +87,6 @@ NSArray *omArgArray;
     NSOpenPanel* panel = [NSOpenPanel openPanel];
     [panel setCanChooseDirectories:NO];
     [panel setAllowsMultipleSelection:YES];
-    //[panel setAllowedFileTypes:oni];
     [panel setMessage:@"Import one or more files."];
     
     // Display the panel attached to the applications window.
@@ -148,7 +147,9 @@ NSArray *omArgArray;
                 
                 //Sends a messge to the user telling them that the output location has been
                 //selected.
-                [_outputLabel setStringValue:@"Output Location has been Selected"];
+                NSString *outputString = @"Output locaction is being selected\n";
+                outputString = [outputString stringByAppendingString:@"Output location has been selected\n "];
+                [_outputLabel setStringValue:outputString];
             }
         }];
     }
@@ -184,7 +185,9 @@ NSArray *omArgArray;
         omArgArray = [omArgArray arrayByAddingObjectsFromArray:fileNames];
         
         //Outputs to the GUI output to tell the user that it has launched OniMesh.
-        [_outputLabel setStringValue:@"OniMesh has been Launched"];
+        NSString *waitForOniMeshString = @"OniMesh has been Launched\n";
+        waitForOniMeshString = [waitForOniMeshString stringByAppendingString:@"Please wait for OniMesh to complete\n"];
+        [_outputLabel setStringValue:waitForOniMeshString];
         
         //Calls StartTask from OMTask with our object of OMTask "theTask."
         theTask.argumentArray = omArgArray;
@@ -193,7 +196,12 @@ NSArray *omArgArray;
         
         //Debugging calls to console to show what files paths were used.
         //NSLog(@"\nFiles to be read in:\n%@",myString);
-        //NSString * outputLocation = [saveOutputUrl absoluteString];
+        NSString * outputLocation = [saveOutputUrl absoluteString];
+        NSString *launchOutputString = @"OniMesh has been Launched\n";
+        launchOutputString = [launchOutputString stringByAppendingString:@"OniMesh has completed\n"];
+        launchOutputString = [launchOutputString stringByAppendingString:@"OniMesh has output to\n"];
+        launchOutputString = [launchOutputString stringByAppendingString:outputLocation];
+        [_outputLabel setStringValue:launchOutputString];
         //NSLog(@"\nOutput Location \n%@\n", outputLocation);
         
         
