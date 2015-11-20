@@ -1,12 +1,18 @@
+/*
+ * Copyright (c) 2015-, Christopher Padgett, David Andrews, Luis Henrique Fae Barboza
+ *
+ * You may use, distribute and modify this code under the terms of the BSD license.
+ *
+ * You should have received a copy of the full BSD license with this file.
+ * If not, please visit: https://github.com/volcanobotg/onimeshOsxGUI for full license information.
+ */
+
 ////////////////////////////////////////////////////////////////////////////////////////
 //  ViewController.m
 //  OniMesh Launcher
 //
 //  This is the implementation file for the view controller. It has the implementation
 //  for the buttons on OniMesh Launcher.
-//
-//  Created by David Andrews on 10/18/15.
-//  Copyright © 2015 David Andrews. All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////////////
 
 
